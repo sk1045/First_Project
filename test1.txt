@@ -1,1 +1,14 @@
-create test1.txt file
+from pytube import YouTube
+import os
+
+video_url = input("Enter the YouTube video URL: ")
+
+try:
+    yt = YouTube(video_url)
+    stream = yt.streams.get_highest_resolution()
+    download_folder = "local folder path"
+    stream.download(output_path=download_folder)
+    print(f"Video downloaded Complete to {download_folder}")
+
+except Exception as e:
+    print(f"An error occurred: {str(e)}")
